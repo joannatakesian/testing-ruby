@@ -46,7 +46,18 @@ describe Game do
         expect(@game.draw).to be true
     end
     
-    it "should end a game when won" do
-        #end game
+    it "should end a game with horizontal win" do
+        @game.instance_variable_set(:@grid, [['\u2655', '\u2655', '\u2655', '\u2655', '\u2658', '\u2658'], ['\u2655', '\u2658', '\u2658', '\u2655', '\u2655', '\u2658'], ['\u2658', '\u2655', '\u2658', '\u2658', '\u2658', '\u2655'], ['\u2655', '\u2658', '\u2655', '\u2655', '\u2655', '\u2658'], ['\u2655', '\u2655', '\u2655', '\u2655', '\u2655', '\u2655'], ['\u2658', '\u2655', '\u2658', '\u2658', '\u2655', '\u2655']])
+        expect(@game.win).to be true
+    end
+    
+    it "should end a game with vertical win" do
+        @game.instance_variable_set(:@grid, [['\u2655', '\u2658', '\u2655', '\u2655', '\u2658', '\u2658'], ['\u2655', '\u2658', '\u2658', '\u2655', '\u2655', '\u2658'], ['\u2655', '\u2655', '\u2658', '\u2658', '\u2658', '\u2655'], ['\u2655', '\u2658', '\u2655', '\u2655', '\u2655', '\u2658'], ['\u2655', '\u2658', '\u2655', '\u2658', '\u2655', '\u2655'], ['\u2658', '\u2655', '\u2658', '\u2658', '\u2655', '\u2655']])
+        expect(@game.win).to be true
+    end
+    
+    it "should end a game with diagonal win" do
+        @game.instance_variable_set(:@grid, [['\u2655', '\u2658', '\u2655', '\u2655', '\u2658', '\u2658'], ['\u2658', '\u2655', '\u2658', '\u2655', '\u2655', '\u2658'], ['\u2655', '\u2655', '\u2655', '\u2658', '\u2658', '\u2655'], ['\u2655', '\u2658', '\u2655', '\u2655', '\u2655', '\u2658'], ['\u2655', '\u2658', '\u2655', '\u2658', '\u2658', '\u2655'], ['\u2658', '\u2655', '\u2658', '\u2658', '\u2655', '\u2655']])
+        expect(@game.win).to be true
     end
 end
