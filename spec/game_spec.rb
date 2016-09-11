@@ -40,10 +40,13 @@ describe Game do
             expect(@game.place_move(1, @game.instance_variable_get(:@player_one))).to eq false
         end
     end
-end
 
-=begin
-Tests to add:
-it "should end game when tied" do
-it "should end game when won" do
-=end
+    it "should end game when a draw" do
+        @game.instance_variable_set(:@grid, [['\u2655', '\u2658', '\u2655', '\u2655', '\u2658', '\u2658'], ['\u2655', '\u2658', '\u2658', '\u2655', '\u2655', '\u2658'], ['\u2658', '\u2655', '\u2658', '\u2658', '\u2658', '\u2655'], ['\u2655', '\u2658', '\u2655', '\u2655', '\u2655', '\u2658'], ['\u2655', '\u2655', '\u2655', '\u2655', '\u2655', '\u2655'], ['\u2658', '\u2655', '\u2658', '\u2658', '\u2655', '\u2655']])
+        expect(@game.draw).to be true
+    end
+    
+    it "should end a game when won" do
+        #end game
+    end
+end

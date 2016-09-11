@@ -20,36 +20,32 @@ class Game
     end
 
     def place_move(move, player)
-        #check line 6
         if @grid[5][move.to_i - 1] == " "
             @grid[5][move.to_i - 1] = player
-            
-        #check line 5
         elsif @grid[4][move.to_i - 1] == " "
             @grid[4][move.to_i - 1] = player
-            
-        #check line 4
         elsif @grid[3][move.to_i - 1] == " "
             @grid[3][move.to_i - 1] = player
-            
-        #check line 3
         elsif @grid[2][move.to_i - 1] == " "
             @grid[2][move.to_i - 1] = player
-            
-        #check line 2
         elsif @grid[1][move.to_i - 1] == " "
             @grid[1][move.to_i - 1] = player
-            
-        #check line 1
         elsif @grid[0][move.to_i - 1] == " "
             @grid[0][move.to_i - 1] = player
-            
-        #return an error
         else
             puts "Sorry, that column is full."
             return false
             get_move(player)
         end
+        draw
         return @grid
     end
+    
+    def draw
+        unless @grid.flatten.include?(" ")
+            puts "It's a draw!"
+            @game_over = true
+        end
+    end
+
 end
